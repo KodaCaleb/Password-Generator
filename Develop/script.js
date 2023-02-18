@@ -35,7 +35,7 @@ generateBtn.addEventListener("click", writePassword);
 // ??? maybe "if 'lowercase' = true(selected) call [lowercase function] else if 'uppercase' = true(selected) call (uppercase function) etc...???
 // maybe if this doesnt work look into  || that we used in rock paper scissors ???
 // -----------------------------------------------------------------
-// asked password length 
+// asked password length.
 //      V
 // ??? how can we convert user input to variables to use in function ???
 // I dont want to use a prompt method (i think that looks bad lol) so maybe look into storeInput function in conjunction with getElementById method
