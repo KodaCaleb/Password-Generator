@@ -13,55 +13,50 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+function generatePassword() {
 
+  // created arrays to hold possible characters
+  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz".split("");
+  var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  var numericChars = "0123456789".split("");
+  var specialChars = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?".split("");
+  
+// created prompt text 
+  var passwordLength = parseInt(prompt("How many characters would you like to use? (8-128)"));
+  var includeLowercase = confirm("would you like to include lowercase characters?");
+  var includeUppercase = confirm("would you like to include uppercase characters?");
+  var includeNumbers = confirm("would you like to include numbers?");
+  var includeSpecial = confirm("would you like to include special characters?")
 
-
-// click button to generate password 
-//       V 
-// EVENT LISTENER? for click?
-// QUERY SELECTOR to assign click to HTML 
-// -----------------------------------------------------------------
-// then you are given prompts for password criteria 
-//                V 
-// ???What functions or methods can I use to prompt this???
-// ???maybe "if" click =  true call function???
-// ???can we convert CLICK EVENT LISTENER to boolean value to call function???
-//----------------------------------------------------------------------
-// able to select criteria for pass gen
-//          V 
-// want to be able to select/highlight boxes containing "Length" + "character types" 
-//  need to run different functions based on selected criteria 
-// ??? can we use a if else statement to run different functions based on selected criteria???
-// ??? maybe "if 'lowercase' = true(selected) call [lowercase function] else if 'uppercase' = true(selected) call (uppercase function) etc...???
-// maybe if this doesnt work look into  || that we used in rock paper scissors ???
-// -----------------------------------------------------------------
-// asked password length.
-//      V
-// ??? how can we convert user input to variables to use in function ???
-// I dont want to use a prompt method (i think that looks bad lol) so maybe look into storeInput function in conjunction with getElementById method
-// example from MDN:
-//   V
-// HTML 
-//  <input type="text" id="nameInput"> 
-//  <button onclick="storeInput()">Submit</button> 
-// JS
-// function storeInput() {
-// let name = document.getElementById("nameInput").value;
-// console.log("Hello, " + name + "!");
-// } 
-// -----------------------------------------------------------------
-// input validated and at least 1 character type should be selected 
-//                      V
-// display selected criteria with confirm box
-// Document Object Model (DOM)
-// -----------------------------------------------------------------
-// when all criteria is selected, and I click generate, generates password matching said criteria 
-// ON CLICK needs EVENTLISTENER
-// 
-// -----------------------------------------------------------------
-// password is written to page 
-//           V
-// Research DOM(Document Object Model) to output result of function 
-
-// FEATURE BRANCH 
-// TODO: Make this shit look better in CSS i want to puke
+  // check to see if password length is valid 
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    alert("please enter a valid password length");
+    return "";
+    // check to see if at least one password criteria is selected 
+  } else if (!includeLowercase && !includeUppercase && !includeSpecial && !includeNumbers) {
+    alert("please select at least one character type");
+    return "";
+  }else {
+    // concatenates all char arrays into one array 
+    var allChars = [];
+    if (includeLowercase){
+      allChars = allChars.concat(lowercaseChars);
+    }
+    if (includeUppercase){
+      allChars = allChars.concat(uppercaseChars);
+    }
+    if (includeSpecial){
+      allChars = allChars.concat(specialChars);
+    }
+    if (includeNumbers){
+      allChars = allChars.concat(numericChars);
+    }
+    // generates the password based on criteria 
+    var password = "";
+    for (var i = 0; i < passwordLength; i++) {
+      var randomIndex = Math.floor(Math.random() * allChars.length);
+      password += allChars[randomIndex];
+    }
+    return password; 
+    }
+  }
