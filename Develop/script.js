@@ -16,17 +16,17 @@ generateBtn.addEventListener("click", writePassword);
 function generatePassword() {
 
   // created arrays to hold possible characters
-  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz".split("");
-  var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  var numericChars = "0123456789".split("");
-  var specialChars = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?".split("");
+  let lowercaseChars = "abcdefghijklmnopqrstuvwxyz".split("");
+  let uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  let numericChars = "0123456789".split("");
+  let specialChars = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?".split("");
   
 // created prompt text 
-  var passwordLength = parseInt(prompt("How many characters would you like to use? (8-128)"));
-  var includeLowercase = confirm("would you like to include lowercase characters?");
-  var includeUppercase = confirm("would you like to include uppercase characters?");
-  var includeNumbers = confirm("would you like to include numbers?");
-  var includeSpecial = confirm("would you like to include special characters?")
+  let passwordLength = parseInt(prompt("How many characters would you like to use? (8-128)"));
+  let includeLowercase = confirm("would you like to include lowercase characters?");
+  let includeUppercase = confirm("would you like to include uppercase characters?");
+  let includeNumbers = confirm("would you like to include numbers?");
+  let includeSpecial = confirm("would you like to include special characters?")
 
   // check to see if password length is valid 
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
